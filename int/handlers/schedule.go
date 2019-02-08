@@ -24,7 +24,7 @@ func NewScheduleHandler(jc job.Scheduler) *ScheduleHandler {
 	}
 }
 
-// schedule <id> <name> <ttr> <ttl> <time> <payload-size> [max-attempts=<value>]
+// Exec; schedule <id> <name> <ttr> <ttl> <time> <payload-size> [max-attempts=<value>]
 // [max-fails=<value>] [-priority=<value>] <payload>
 //
 // Schedules a job to run at a UTC time with respect for <priority>

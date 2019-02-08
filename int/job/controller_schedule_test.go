@@ -189,7 +189,7 @@ func TestScheduleDuplicate(t *testing.T) {
 	}
 }
 
-// Test to ensure scheduled jobs before their scheduled time can gracefully be
+// TestScheduleDeleteBeforeTime checks a case when to ensure scheduled jobs before their scheduled time can gracefully be
 // deleted.
 func TestScheduleDeleteBeforeTime(t *testing.T) {
 	reg := NewRegistry()
@@ -231,7 +231,7 @@ func TestScheduleDeleteBeforeTime(t *testing.T) {
 	}
 }
 
-// Test to ensure scheduled jobs after their scheduled time and before expiration
+// TestScheduleDeleteAfterAwake checks a case when to ensure scheduled jobs after their scheduled time and before expiration
 // can gracefully be deleted.
 func TestScheduleDeleteAfterAwake(t *testing.T) {
 	reg := NewRegistry()
@@ -275,7 +275,7 @@ func TestScheduleDeleteAfterAwake(t *testing.T) {
 	}
 }
 
-// This is not expected during normal use. Testing for coverage.
+// TestScheduleOutofSyncQueue is not expected during normal use. Testing for coverage.
 func TestScheduleOutofSyncQueue(t *testing.T) {
 	jc := NewController(NewRegistry(), &OutOfSyncController{})
 
@@ -292,7 +292,7 @@ func TestScheduleOutofSyncQueue(t *testing.T) {
 	}
 }
 
-// Test to ensure, awake on a invalid job id is a graceful NO-OP.
+// TestScheduleAwakeInvalidJob checks a case when to ensure, awake on a invalid job id is a graceful NO-OP.
 func TestScheduleAwakeInvalidJob(t *testing.T) {
 	reg := NewRegistry()
 	qc := NewQueueController()

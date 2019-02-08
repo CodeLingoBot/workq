@@ -26,7 +26,7 @@ func NewAddHandler(jc job.Adder) *AddHandler {
 	}
 }
 
-// add <id> <name> <ttr> <ttl> <payload-size> [max-attempts=<value>]
+// Exec; add <id> <name> <ttr> <ttl> <payload-size> [max-attempts=<value>]
 // [max-fails=<value>] [-priority=<value>] <payload>
 //
 // Adds a job to its named work queue with respect for <priority>

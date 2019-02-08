@@ -142,7 +142,7 @@ func NewController(reg *Registry, qc QueueControllerInterface) *Controller {
 	return c
 }
 
-// Adds a job to its named work queue with respect for <priority>.
+// Add; a job to its named work queue with respect for <priority>.
 // TTL timer starts immmediately.
 func (c *Controller) Add(j *Job) error {
 	if err := ValidateAddJob(j); err != nil {
@@ -178,7 +178,7 @@ func (c *Controller) Add(j *Job) error {
 	return nil
 }
 
-// Sucessfully complete a job with an optional result.
+// Complete; Sucessfully complete a job with an optional result.
 // Stops TTR timer.
 func (c *Controller) Complete(id ID, result []byte) error {
 	var err error
@@ -314,7 +314,7 @@ func (c *Controller) Lease(names []string, timeout uint32) (*Job, error) {
 	}
 }
 
-// Get the first job from a list of job lease channels.
+// firstJob gets the first job from a list of job lease channels.
 func firstJob(cs []<-chan JobProxy, timeoutCh <-chan time.Time) (*Job, error) {
 	out := make(chan JobProxy, 1)
 	done := make(chan struct{})
@@ -469,7 +469,7 @@ func (c *Controller) Run(j *Job, timeout uint32) (*RunResult, error) {
 	}
 }
 
-// Schedules a job to run at a UTC time with respect for <priority>
+// Schedule; a job to run at a UTC time with respect for <priority>
 // TTL timer starts when scheduled time is met.
 func (c *Controller) Schedule(j *Job) error {
 	var err error
@@ -541,12 +541,12 @@ func (c *Controller) HandleExpire(f func(ID)) {
 	c.expireFunc = f
 }
 
-// Return the current Expire callback.
+// ExpireFunc; Return the current Expire callback.
 func (c *Controller) ExpireFunc() func(ID) {
 	return c.expireFunc
 }
 
-// Timeout job attempt by ID.
+// TimeoutAttempt; job attempt by ID.
 // See the "timeoutAttempt()" method for the implementation.
 func (c *Controller) TimeoutAttempt(id ID) {
 	c.timeoutAttemptFunc(id)
@@ -589,12 +589,12 @@ func (c *Controller) HandleTimeoutAttempt(f func(ID)) {
 	c.timeoutAttemptFunc = f
 }
 
-// Return TimeoutAttempt callback.
+// TimeoutAttemptFunc; Return TimeoutAttempt callback.
 func (c *Controller) TimeoutAttemptFunc() func(ID) {
 	return c.timeoutAttemptFunc
 }
 
-// Start an attempt by ID.
+// StartAttempt starts an attempt by ID.
 // Ensures jobs respect TTR & max attempts policy.
 func (c *Controller) StartAttempt(id ID) error {
 	rec, ok := c.reg.Record(id)

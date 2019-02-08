@@ -50,7 +50,7 @@ type Interface interface {
 
 type Prot struct{}
 
-// Creates an encapsulation of the request as a minimal Cmd data structure and
+// ParseCmd creates an encapsulation of the request as a minimal Cmd data structure and
 // holds all the data required for processing. It is up to each handler to
 // ensure the validity of the command data.
 func (p Prot) ParseCmd(rdr *bufio.Reader) (*Cmd, error) {

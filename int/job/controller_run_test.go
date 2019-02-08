@@ -165,7 +165,7 @@ func TestRunResult(t *testing.T) {
 	}
 }
 
-// This is not expected during normal use. Testing for coverage.
+// TestRunOutofSyncQueue is not expected during normal use. Testing for coverage.
 func TestRunOutofSyncQueue(t *testing.T) {
 	jc := NewController(NewRegistry(), &OutOfSyncController{})
 
@@ -181,7 +181,7 @@ func TestRunOutofSyncQueue(t *testing.T) {
 	}
 }
 
-// Test result after wait-timeout, but before ttr.
+// TestRunResultAfterWaitTimeout tests result after wait-timeout, but before ttr.
 func TestRunResultAfterWaitTimeout(t *testing.T) {
 	reg := NewRegistry()
 	qc := NewQueueController()
@@ -320,7 +320,7 @@ func TestRunTTRTimeout(t *testing.T) {
 	}
 }
 
-// Tests to ensure TTR timeout when TTR timer is cleared
+// TestRunTTRTimeoutNoTimer tests to ensure TTR timeout when TTR timer is cleared
 func TestRunTTRTimeoutNoTimer(t *testing.T) {
 	reg := NewRegistry()
 	qc := NewQueueController()

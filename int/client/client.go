@@ -50,24 +50,24 @@ func New(conn Conn, n int64) *Client {
 	return c
 }
 
-// Reset the read limit back to original value.
+// ResetLimit; the read limit back to original value.
 // It is expected to be reset for every new cmd or read "session".
 func (c *Client) ResetLimit() {
 	c.limitRdr.N = c.limitN
 }
 
-// Return Limited Bufio Reader
+// Reader; Return Limited Bufio Reader
 // Callers should invoke ResetLimit to reset read limits to original value.
 func (c *Client) Reader() *bufio.Reader {
 	return c.rdr
 }
 
-// Return Writer
+// Writer; Return Writer
 func (c *Client) Writer() io.Writer {
 	return c.conn
 }
 
-// Return Closer
+// Closer; Return Closer
 func (c *Client) Closer() io.Closer {
 	return c.conn
 }

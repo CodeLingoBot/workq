@@ -108,7 +108,7 @@ func (w *WorkQueue) Awake(j *Job) bool {
 	return true
 }
 
-// Verify if the job already exists
+// Exists; Verify if the job already exists
 func (w *WorkQueue) Exists(j *Job) bool {
 	if w.ready.Exists(j) {
 		return true
@@ -117,12 +117,12 @@ func (w *WorkQueue) Exists(j *Job) bool {
 	return w.scheduled.Exists(j)
 }
 
-// Get the length of the combined queues.
+// Len gets the length of the combined queues.
 func (w *WorkQueue) Len() int {
 	return w.ready.Len() + w.scheduled.Len()
 }
 
-// Pump a pop method which implements JobProxy to lease channel
+// sendJobProxy; Pump a pop method which implements JobProxy to lease channel
 func (w *WorkQueue) sendJobProxy() {
 	select {
 	case w.lease <- w.pop:
@@ -131,7 +131,7 @@ func (w *WorkQueue) sendJobProxy() {
 	}
 }
 
-// JobProxy implementation
+// pop; implementation
 // Follows comma ok idiom
 func (w *WorkQueue) pop() (*Job, bool) {
 	if item, ok := w.ready.Pop(); ok {
@@ -147,7 +147,7 @@ func (w *WorkQueue) pop() (*Job, bool) {
 // Used in WorkQueue leases
 type JobProxy func() (*Job, bool)
 
-// Skiplist compare based on priority,scheduled time,created time
+// compare; Skiplist compare based on priority,scheduled time,created time
 func compare(a interface{}, b interface{}) int {
 	aj := a.(*Job)
 	bj := b.(*Job)
@@ -193,7 +193,7 @@ func NewInspector(wqueue *WorkQueue) *Inspector {
 	return &Inspector{wqueue: wqueue}
 }
 
-// Length of individual queues
+// Lens; Length of individual queues
 func (i *Inspector) Lens() (int, int) {
 	return i.wqueue.ready.Len(), i.wqueue.scheduled.Len()
 }
@@ -233,13 +233,13 @@ var makeQueue = func() QueueInterface {
 	return NewWorkQueue()
 }
 
-// Return all queues as a map with an explicit sync.RWMutex.
+// Queues; Return all queues as a map with an explicit sync.RWMutex.
 // All calls to the map require locking.
 func (c *QueueController) Queues() (map[string]QueueInterface, *sync.RWMutex) {
 	return c.queues, &c.mu
 }
 
-// Return a queue by name, creating it if it does not exist.
+// Queue; Return a queue by name, creating it if it does not exist.
 func (c *QueueController) Queue(name string) QueueInterface {
 	c.mu.RLock()
 	var q QueueInterface
@@ -291,13 +291,13 @@ func (c *QueueController) Awake(j *Job) bool {
 	return q.Awake(j)
 }
 
-// Verify if a job exists by object.
+// Exists; Verify if a job exists by object.
 func (c *QueueController) Exists(j *Job) bool {
 	q := c.Queue(j.Name)
 	return q.Exists(j)
 }
 
-// Return a job lease by name
+// Lease; Return a job lease by name
 func (c *QueueController) Lease(name string) <-chan JobProxy {
 	q := c.Queue(name)
 	return q.Lease()

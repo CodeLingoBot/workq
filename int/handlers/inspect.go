@@ -65,7 +65,7 @@ func NewInspectHandler(
 	}
 }
 
-// inspect <object>
+// Exec; inspect <object>
 // Routes inspect commands to their individual object commands.
 //
 // Returns:
@@ -114,7 +114,7 @@ func NewInspectServerHandler(s ServerStater, j JobStater) *InspectServerHandler 
 	}
 }
 
-// inspect server
+// Exec; inspect server
 //
 // Show general info on server state.
 //
@@ -155,7 +155,7 @@ func NewInspectQueueHandler(qc job.QueueControllerInterface) *InspectQueueHandle
 	return &InspectQueueHandler{qc: qc}
 }
 
-// Inspect queue <name>
+// Exec; Inspect queue <name>
 //
 // Show single queue info by name.
 //
@@ -201,7 +201,7 @@ func NewInspectQueuesHandler(qc job.QueueControllerInterface) *InspectQueuesHand
 	return &InspectQueuesHandler{qc: qc}
 }
 
-// Inspect queues <cursor-offset> <limit>
+// Exec; Inspect queues <cursor-offset> <limit>
 //
 // Scan available queues based on a cursor-offset and limit.
 // Returns queues in aplhabetical order.
@@ -260,7 +260,7 @@ func (h *InspectQueuesHandler) Exec(cmd *prot.Cmd) ([]byte, error) {
 	return b, nil
 }
 
-// Format single Queue for inspect cmds.
+// QueueResp; Format single Queue for inspect cmds.
 func QueueResp(name string, insp *job.Inspector) []byte {
 	var b []byte
 	b = append(b, []byte(fmt.Sprintf("%s 2", name))...)
@@ -282,7 +282,7 @@ func NewInspectJobsHandler(reg *job.Registry, qc job.QueueControllerInterface) *
 	return &InspectJobsHandler{reg: reg, qc: qc}
 }
 
-// inspect jobs <name> <cursor-offset> <limit>
+// Exec; inspect jobs <name> <cursor-offset> <limit>
 // &
 // inspect scheduled-jobs <name> <cursor-offset> <limit>
 //
@@ -377,7 +377,7 @@ func NewInspectJobHandler(reg *job.Registry) *InspectJobHandler {
 	return &InspectJobHandler{reg: reg}
 }
 
-// inspect job <id>
+// Exec; inspect job <id>
 //
 // Show a single job by id.
 //
@@ -406,7 +406,7 @@ func (h *InspectJobHandler) Exec(cmd *prot.Cmd) ([]byte, error) {
 	return resp, nil
 }
 
-// Format a single job for inspect cmds.
+// JobResp; Format a single job for inspect cmds.
 func JobResp(rec *job.RunRecord, j *job.Job) []byte {
 	var b []byte
 	isScheduled := j.Time != (time.Time{})
@@ -468,7 +468,7 @@ func JobResp(rec *job.RunRecord, j *job.Job) []byte {
 	return b
 }
 
-// Return a valid cursor offset from byte slice.
+// validCursorOffsetFromBytes; Return a valid cursor offset from byte slice.
 // A valid cursor offset is 2^32 - 1 and non-negative.
 // Returns an error if cursor offset is out of range.
 func validCursorOffsetFromBytes(b []byte) (int, error) {
@@ -480,7 +480,7 @@ func validCursorOffsetFromBytes(b []byte) (int, error) {
 	return int(offset), nil
 }
 
-// Return a valid limit from byte slice.
+// validLimitFromBytes; Return a valid limit from byte slice.
 // A valid limit is 1-1000
 // Returns an error if cursor offset is out of range.
 func validLimitFromBytes(b []byte) (int, error) {

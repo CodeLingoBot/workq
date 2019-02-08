@@ -139,7 +139,7 @@ func (a *Appender) Append(b []byte) error {
 	return a.syncAlways(seg)
 }
 
-// Return the active append file handling rotation if neccessary.
+// activeSegment; Return the active append file handling rotation if neccessary.
 func (a *Appender) activeSegment() (*segmentWriter, error) {
 	// If no active segment exists, find the latest.
 	if a.seg == nil {
@@ -178,7 +178,7 @@ func (a *Appender) activeSegment() (*segmentWriter, error) {
 	return a.seg, nil
 }
 
-// Open a segment by sequence as a writer.
+// openSegment; a segment by sequence as a writer.
 // Rotates to the next segment if requested segment is already full.
 func (a *Appender) openSegment(seq uint32) (*segmentWriter, error) {
 	path := fmt.Sprintf("%s/%09d.log", a.path, seq)

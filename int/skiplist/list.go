@@ -135,7 +135,7 @@ func (l *List) Insert(item interface{}) bool {
 	return inserted
 }
 
-// Verifies if an item is in the queue
+// Exists verifies if an item is in the queue
 func (l *List) Exists(item interface{}) bool {
 	l.mu.RLock()
 	defer l.mu.RUnlock()
@@ -230,7 +230,7 @@ func (l *List) Delete(item interface{}) bool {
 	return found
 }
 
-// Lengh of items in list
+// Len; of items in list
 func (l *List) Len() int {
 	l.mu.RLock()
 	defer l.mu.RUnlock()
@@ -249,7 +249,7 @@ type Iterator struct {
 	mu *sync.RWMutex
 }
 
-// Return the next item
+// Next; Return the next item
 func (it *Iterator) Next() interface{} {
 	it.mu.RLock()
 	defer it.mu.RUnlock()
@@ -262,7 +262,7 @@ func (it *Iterator) Next() interface{} {
 	return nil
 }
 
-// Return the current item
+// Current; Return the current item
 func (it *Iterator) Current() interface{} {
 	it.mu.RLock()
 	defer it.mu.RUnlock()

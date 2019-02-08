@@ -56,7 +56,7 @@ type Job struct {
 	Created     time.Time
 }
 
-// New Empty Job returns an Job with its created time initiliazed.
+// NewEmptyJob; New Empty Job returns an Job with its created time initiliazed.
 func NewEmptyJob() *Job {
 	return &Job{Created: time.Now().UTC()}
 }
@@ -73,7 +73,7 @@ func (j *Job) Expiration() time.Time {
 // 16 byte UUIDv4
 type ID [16]byte // UUIDv4
 
-// Returns canonical UUIDv4 form
+// String returns canonical UUIDv4 form
 // Implements fmt.Stringer
 func (id ID) String() string {
 	u := uuid.UUID(id)
@@ -116,7 +116,7 @@ func ValidateResult(r []byte) error {
 	return nil
 }
 
-// A valid TTR is 2^32 - 1, non zero, and non-negative.
+// ValidateTTR; A valid TTR is 2^32 - 1, non zero, and non-negative.
 func ValidateTTR(ttr uint32) error {
 	if ttr == 0 || ttr > MaxTTR {
 		return ErrInvalidTTR
@@ -125,7 +125,7 @@ func ValidateTTR(ttr uint32) error {
 	return nil
 }
 
-// Valid TTL is 2^64 - 1, non zero, and non-negative.
+// ValidateTTL; TTL is 2^64 - 1, non zero, and non-negative.
 func ValidateTTL(ttl uint64) error {
 	if ttl == 0 || ttl > MaxTTL {
 		return ErrInvalidTTL
@@ -134,7 +134,7 @@ func ValidateTTL(ttl uint64) error {
 	return nil
 }
 
-// Valid time is in UTC, and greater or equal to current time.
+// ValidateTime; time is in UTC, and greater or equal to current time.
 func ValidateTime(t time.Time) error {
 	if time.Now().After(t) {
 		return ErrInvalidTime

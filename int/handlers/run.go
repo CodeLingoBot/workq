@@ -23,7 +23,7 @@ func NewRunHandler(jc job.Runner) *RunHandler {
 	}
 }
 
-// run <id> <name> <ttr> <wait-timeout> <payload-size> [-priority=<value>]
+// Exec; run <id> <name> <ttr> <wait-timeout> <payload-size> [-priority=<value>]
 // <payload-bytes>
 //
 // Run a job, blocking until wait-timeout if no workers are available, or until TTR

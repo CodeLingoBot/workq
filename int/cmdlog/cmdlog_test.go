@@ -326,7 +326,7 @@ func TestExpire(t *testing.T) {
 	app.AssertInvoked()
 }
 
-// Test to ensure Expire calls from origin will invoke the Proxy when wrapped.
+// TestExpireProxyWrapper tests to ensure Expire calls from origin will invoke the Proxy when wrapped.
 // Covers cases when timer calls are invoked from origin controller.
 func TestExpireProxyWrapper(t *testing.T) {
 	id := [16]byte{0x61, 0xa4, 0x44, 0xa0, 0x61, 0x28, 0x41, 0xc0, 0x80, 0x78, 0xcc, 0x75, 0x7d, 0x3b, 0xd2, 0xd8}
@@ -374,7 +374,7 @@ func TestTimeoutAttempt(t *testing.T) {
 	app.AssertInvoked()
 }
 
-// Test to ensure TimeoutAttempt() calls from origin will invoke the Proxy when wrapped.
+// TestTimeoutAttemptProxyWrapper tests to ensure TimeoutAttempt() calls from origin will invoke the Proxy when wrapped.
 // Covers cases when timer calls are invoked from origin controller.
 func TestTimeoutAttemptProxyWrapper(t *testing.T) {
 	id := [16]byte{0x61, 0xa4, 0x44, 0xa0, 0x61, 0x28, 0x41, 0xc0, 0x80, 0x78, 0xcc, 0x75, 0x7d, 0x3b, 0xd2, 0xd8}

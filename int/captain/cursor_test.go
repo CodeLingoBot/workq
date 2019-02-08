@@ -35,7 +35,7 @@ func TestCursorNext(t *testing.T) {
 	}
 }
 
-// Test for using a cursor on a directory with mixed
+// TestCursorWithMixedInvalidSegments tests for using a cursor on a directory with mixed
 // invalid segment files. Ensures that all invalid segments
 // will be skipped.
 func TestCursorWithMixedInvalidSegments(t *testing.T) {
@@ -85,7 +85,7 @@ func TestCursorNewWithInvalidDir(t *testing.T) {
 	}
 }
 
-// Test for a segment file expected to exist / readable,
+// TestCursorWithUnreadableSegmentFile tests for a segment file expected to exist / readable,
 // but fails to be read during actual cursor iteration.
 func TestCursorWithUnreadableSegmentFile(t *testing.T) {
 	s := NewStream("./test/cursor-next", testMagicHeader)
@@ -155,7 +155,7 @@ func TestCursorSegment(t *testing.T) {
 	}
 }
 
-// Test to ensure multiple cursors can take locks which are read locks.
+// TestCursorReadLockUnlock tests to ensure multiple cursors can take locks which are read locks.
 func TestCursorReadLockUnlock(t *testing.T) {
 	dir := "./test/cursor-next"
 	s := NewStream(dir, testMagicHeader)

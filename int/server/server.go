@@ -58,7 +58,7 @@ func New(addr string, router Router, protocol prot.Interface) *Server {
 	}
 }
 
-// Start a Workq Server, listening on the specified TCP address
+// ListenAndServe starts a Workq Server, listening on the specified TCP address
 func (s *Server) ListenAndServe() error {
 	var err error
 	s.mu.Lock()
@@ -89,7 +89,7 @@ func (s *Server) ListenAndServe() error {
 	}
 }
 
-// Stops listening while maintaining all active connections
+// Stop; listening while maintaining all active connections
 func (s *Server) Stop() error {
 	s.mu.Lock()
 	defer s.mu.Unlock()

@@ -68,7 +68,7 @@ func (c *Cursor) Next() (*Record, error) {
 	return c.nextRecord()
 }
 
-// Main implementation of nextRecord.
+// nextRecord; Main implementation of nextRecord.
 // This indirection allows for nextRecord to be called recursively
 // without locking (handled in Next() parent method).
 func (c *Cursor) nextRecord() (*Record, error) {
@@ -108,7 +108,7 @@ func (c *Cursor) nextRecord() (*Record, error) {
 	return r, nil
 }
 
-// Move cursor to next segment.
+// nextSegment; Move cursor to next segment.
 // Not to be executed directly, locks take place in Next().
 func (c *Cursor) nextSegment() (*segmentCursor, error) {
 	if c.current != nil {

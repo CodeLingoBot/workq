@@ -113,7 +113,7 @@ func startCmdLogServer(path string, size uint) *os.Process {
 	return cmd.Process
 }
 
-// Generates n jobs that expire at defaultTTL with these exceptions / canary jobs:
+// runGenCommands generates n jobs that expire at defaultTTL with these exceptions / canary jobs:
 //
 // 1 job completed
 // 1 job failed

@@ -275,7 +275,7 @@ func TestAddJobErrors(t *testing.T) {
 	}
 }
 
-// Only client cmd specific args + parsing are tested.
+// TestAddInvalidArgs; Only client cmd specific args + parsing are tested.
 // Job specific properties are owned by the job controller.
 // Avoids heavy repeated test cases.
 func TestAddInvalidArgs(t *testing.T) {

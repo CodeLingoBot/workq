@@ -22,7 +22,7 @@ func NewFailHandler(jc job.Failer) *FailHandler {
 	}
 }
 
-// fail <id> <result-size> <result>
+// Exec; fail <id> <result-size> <result>
 //
 // Fails a job with an optional result.
 // Stops any further TTR timer.

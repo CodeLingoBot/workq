@@ -148,7 +148,7 @@ func TestAppendInvalidDir(t *testing.T) {
 	}
 }
 
-// Test failure handling for an unlikely record marshaling error.
+// TestAppendRecordMarshalFailure tests failure handling for an unlikely record marshaling error.
 func TestAppendRecordMarshalFailure(t *testing.T) {
 	testErr := errors.New("invalid file descriptor")
 	copy := binaryWrite
@@ -181,7 +181,7 @@ func TestAppendRecordMarshalFailure(t *testing.T) {
 	}
 }
 
-// Test internal writer failure handling.
+// TestAppendWriteFailure tests internal writer failure handling.
 // e.g., Disk full, closed fd.
 func TestAppendWriteFailure(t *testing.T) {
 	expData := []byte("deadbeef")
@@ -268,7 +268,7 @@ func TestAppenderNewWithInvalidDir(t *testing.T) {
 	}
 }
 
-// Opening a new appender on a directory with the last segment file already at
+// TestAppenderLastActiveFileAtLimit checks a case when Opening a new appender on a directory with the last segment file already at
 // the SegmentSize limit, should rotate it immediately.
 func TestAppenderLastActiveFileAtLimit(t *testing.T) {
 	dir := "./test/appender-rotate-limit"

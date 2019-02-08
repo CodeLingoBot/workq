@@ -22,7 +22,7 @@ func NewCompleteHandler(jc job.Completer) *CompleteHandler {
 	}
 }
 
-// complete <id> <result-size> <result>
+// Exec; complete <id> <result-size> <result>
 //
 // Sucessfully complete a job with an optional result.
 // Stops TTR timer.

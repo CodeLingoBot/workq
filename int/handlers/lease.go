@@ -15,7 +15,7 @@ func NewLeaseHandler(jc job.Leaser) *LeaseHandler {
 	}
 }
 
-// lease <name>... <wait-timeout>
+// Exec; lease <name>... <wait-timeout>
 //
 // Lease a job by name blocking until wait-timeout. Multiple job names can be
 // specified and they will be processed uniformly by random selection.

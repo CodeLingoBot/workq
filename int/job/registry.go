@@ -76,7 +76,7 @@ func (r *Registry) Delete(id ID) bool {
 	return true
 }
 
-// Look up run record by ID
+// Record; Look up run record by ID
 // Follows comma ok idiom
 func (r *Registry) Record(jid ID) (*RunRecord, bool) {
 	r.mu.RLock()
@@ -88,7 +88,7 @@ func (r *Registry) Record(jid ID) (*RunRecord, bool) {
 	return nil, false
 }
 
-// Return length of registry
+// Len; Return length of registry
 func (r *Registry) Len() int {
 	r.mu.RLock()
 	c := len(r.all)
@@ -109,29 +109,29 @@ type RunRecord struct {
 	Mu       sync.RWMutex
 }
 
-// Returns an empty but intiialized run record
+// NewRunRecord returns an empty but intiialized run record
 func NewRunRecord() *RunRecord {
 	return &RunRecord{
 		Wait: make(Wait, 1),
 	}
 }
 
-// Returns if the job was successful
+// Success returns if the job was successful
 func (r *RunRecord) Success() bool {
 	return r.State == StateCompleted
 }
 
-// Returns if the job is currently executing.
+// Running returns if the job is currently executing.
 func (r *RunRecord) Running() bool {
 	return r.State == StateLeased
 }
 
-// Returns if the job is fully processed.
+// Processed returns if the job is fully processed.
 func (r *RunRecord) Processed() bool {
 	return r.State == StateCompleted || r.State == StateFailed
 }
 
-// Records a job result and sends result over the "wait" channel.
+// WriteResult records a job result and sends result over the "wait" channel.
 // Requires locking.
 // Returns false if result has already been written.
 func (r *RunRecord) WriteResult(result Result, success bool) bool {

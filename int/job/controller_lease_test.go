@@ -355,7 +355,7 @@ func TestTimeoutAttempt(t *testing.T) {
 	}
 }
 
-// Internal test for code coverage.
+// TestLeaseTTRTimerCancelled; Internal test for code coverage.
 // Simulates a leased job deleted mid-attempt.
 func TestLeaseTTRTimerCancelled(t *testing.T) {
 	reg := NewRegistry()

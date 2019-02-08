@@ -111,7 +111,7 @@ func TestLeaseErrorResponses(t *testing.T) {
 	}
 }
 
-// Only client cmd specific args + parsing are tested.
+// TestLeaseInvalidArgs; Only client cmd specific args + parsing are tested.
 // Job specific properties are owned by the job controller.
 // Avoids heavy repeated test cases.
 func TestLeaseInvalidArgs(t *testing.T) {

@@ -510,7 +510,7 @@ func TestCleanerProcessLock(t *testing.T) {
 	}
 }
 
-// Test to ensure opening an existing rewrite file with a failure to remove
+// TestOpenSegmentRewriterInitialRemoveFailure tests to ensure opening an existing rewrite file with a failure to remove
 // the existing file fails.
 func TestOpenSegmentRewriterInitialRemoveFailure(t *testing.T) {
 	dir, err := ioutil.TempDir("", "test-captain")

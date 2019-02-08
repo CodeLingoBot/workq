@@ -300,7 +300,7 @@ func TestInspectJobsOutOfRangeSeek(t *testing.T) {
 	}
 }
 
-// When job record is missing while scanning.
+// TestInspectJobsOutOfSyncQueue checks a case when When job record is missing while scanning.
 // Expected if a job is deleted or expired while scanning.
 func TestInspectJobsOutOfSyncQueue(t *testing.T) {
 	reg := job.NewRegistry()

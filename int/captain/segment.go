@@ -226,7 +226,7 @@ func (h *MagicHeader) MarshalBinary() ([]byte, error) {
 	return buf, nil
 }
 
-// MarshalBinary sets the magic header from data in BigEndian.
+// UnmarshalBinary sets the magic header from data in BigEndian.
 func (h *MagicHeader) UnmarshalBinary(data []byte) error {
 	if len(data) != headSize {
 		return errors.New("invalid length")

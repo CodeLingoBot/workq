@@ -230,7 +230,7 @@ func TestAddCancelledTTLTimer(t *testing.T) {
 	}
 }
 
-// This is not expected during normal use. Testing for coverage.
+// TestAddOutofSyncQueue is not expected during normal use. Testing for coverage.
 func TestAddOutofSyncQueue(t *testing.T) {
 	jc := NewController(NewRegistry(), &OutOfSyncController{})
 

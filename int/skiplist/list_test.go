@@ -229,7 +229,7 @@ func TestExists(t *testing.T) {
 	}
 }
 
-// Test search path given skiplist:
+// TestSearchPath checks a case when search path given skiplist:
 //    4
 //   345
 // 123456
